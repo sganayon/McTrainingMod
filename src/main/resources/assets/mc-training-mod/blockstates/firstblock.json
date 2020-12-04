@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": {"model": "mc-training-mod:block/firstblock", "x": 90}
+  }
+}
