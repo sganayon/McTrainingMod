@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "x x",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "mc-training-mod:firstblock"
+    }
+  },
+  "result": {
+    "item": "mc-training-mod:firstgenerator"
+  }
+}

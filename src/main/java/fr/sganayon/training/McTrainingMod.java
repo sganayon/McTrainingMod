@@ -16,7 +16,7 @@ public class McTrainingMod {
 
     public static ModSetup setup = new ModSetup();
 
-    // Double lambda for class contruction things
+    // Double lambda for class contruction things, optional appearently
     public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
 
     public static RegistryEvents registryEvents;

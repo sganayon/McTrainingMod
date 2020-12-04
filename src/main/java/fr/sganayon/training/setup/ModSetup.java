@@ -6,7 +6,9 @@ import net.minecraft.item.ItemStack;
 
 public class ModSetup {
 
+    // creative tab
     public static final ItemGroup itemGroup = new ItemGroup("mc-training-mod") {
+        // item of the tab shown in creative tab
         @Override
         public ItemStack createIcon() {
             return new ItemStack(ModBlocks.FIRSTBLOCK);
