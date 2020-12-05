@@ -1,14 +1,15 @@
 package fr.sganayon.training.setup;
 
-import fr.sganayon.training.blocks.FirstBlock;
-import fr.sganayon.training.blocks.FirstGenerator;
-import fr.sganayon.training.blocks.FirstGeneratorTile;
-import fr.sganayon.training.blocks.ModBlocks;
+import fr.sganayon.training.McTrainingMod;
+import fr.sganayon.training.blocks.*;
 import fr.sganayon.training.items.FirstItem;
 import net.minecraft.block.Block;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -55,5 +56,17 @@ public class RegistryEvents {
         LOGGER.info("tileEntity registration for mc-training-mod");
 
         tileEntityRegistryEvent.getRegistry().register(TileEntityType.Builder.create(FirstGeneratorTile::new, ModBlocks.FIRSTGENERATOR).build(null).setRegistryName("firstgenerator"));
+    }
+
+    // Only for client
+    @SubscribeEvent
+    public static void onContainerRegistry(final RegistryEvent.Register<ContainerType<?>> containerRegistryEvent){
+        // register a new container here (same registry Name as block)
+        LOGGER.info("container registration for mc-training-mod");
+
+        containerRegistryEvent.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
+            BlockPos blockPos = data.readBlockPos();
+            return new FirstGeneratorContainer(windowId, McTrainingMod.proxy.getClientWorld(), blockPos, inv, McTrainingMod.proxy.getClientPlayer());
+        }).setRegistryName("firstgenerator"));
     }
 }

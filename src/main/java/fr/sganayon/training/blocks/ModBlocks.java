@@ -1,5 +1,6 @@
 package fr.sganayon.training.blocks;
 
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -14,4 +15,7 @@ public class ModBlocks {
 
     @ObjectHolder("mc-training-mod:firstgenerator")
     public static TileEntityType<FirstGeneratorTile> FIRSTGENERATOR_TILE;
+
+    @ObjectHolder("mc-training-mod:firstgenerator")
+    public static ContainerType<FirstGeneratorContainer> FIRSTGENERATOR_CONTAINER;
 }
