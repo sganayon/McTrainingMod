@@ -1,5 +1,6 @@
 package fr.sganayon.training.blocks;
 
+import fr.sganayon.training.tools.CustomEnergyStorage;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -8,8 +9,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.util.IntReferenceHolder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -36,6 +40,24 @@ public class FirstGeneratorContainer extends Container {
 
         //top left corner of the player inv in the gui
         layoutPlayerInventorySlots(8, 84);
+
+
+        //WTF need mapping
+        func_216958_a(new IntReferenceHolder() {
+            @Override
+            public int get() {
+                return getEnergy();
+            }
+
+            @Override
+            public void set(int value) {
+                tileEntity.getCapability(CapabilityEnergy.ENERGY).ifPresent(h -> ((CustomEnergyStorage)h).setEnergy(value));
+            }
+        });
+    }
+
+    public int getEnergy(){
+        return tileEntity.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
     }
 
     @Override

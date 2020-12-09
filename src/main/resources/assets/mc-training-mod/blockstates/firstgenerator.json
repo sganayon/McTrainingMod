@@ -1,10 +1,17 @@
 {
   "variants": {
-    "facing=north": {"model": "mc-training-mod:block/firstgenerator"},
-    "facing=down": {"model": "mc-training-mod:block/firstgenerator", "x": 90},
-    "facing=up": {"model": "mc-training-mod:block/firstgenerator", "x": -90},
-    "facing=south": {"model": "mc-training-mod:block/firstgenerator","y": 180},
-    "facing=west": {"model": "mc-training-mod:block/firstgenerator","y": 270},
-    "facing=east": {"model": "mc-training-mod:block/firstgenerator","y": 90}
+    "facing=north,powered=false": {"model": "mc-training-mod:block/firstgenerator"},
+    "facing=down,powered=false": {"model": "mc-training-mod:block/firstgenerator", "x": 90},
+    "facing=up,powered=false": {"model": "mc-training-mod:block/firstgenerator", "x": -90},
+    "facing=south,powered=false": {"model": "mc-training-mod:block/firstgenerator","y": 180},
+    "facing=west,powered=false": {"model": "mc-training-mod:block/firstgenerator","y": 270},
+    "facing=east,powered=false": {"model": "mc-training-mod:block/firstgenerator","y": 90},
+
+    "facing=north,powered=true": {"model": "mc-training-mod:block/firstgenerator_powered"},
+    "facing=down,powered=true": {"model": "mc-training-mod:block/firstgenerator_powered", "x": 90},
+    "facing=up,powered=true": {"model": "mc-training-mod:block/firstgenerator_powered", "x": -90},
+    "facing=south,powered=true": {"model": "mc-training-mod:block/firstgenerator_powered","y": 180},
+    "facing=west,powered=true": {"model": "mc-training-mod:block/firstgenerator_powered","y": 270},
+    "facing=east,powered=true": {"model": "mc-training-mod:block/firstgenerator_powered","y": 90}
   }
 }

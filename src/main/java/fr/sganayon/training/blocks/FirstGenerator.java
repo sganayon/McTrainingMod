@@ -57,7 +57,7 @@ public class FirstGenerator extends Block {
 
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(BlockStateProperties.FACING);
+        builder.add(BlockStateProperties.FACING, BlockStateProperties.POWERED);
     }
 
     @Override
@@ -76,5 +76,10 @@ public class FirstGenerator extends Block {
             return true;
         }
         return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+    }
+
+    @Override
+    public int getLightValue(BlockState state) {
+        return state.get(BlockStateProperties.POWERED) ? 14 : super.getLightValue(state);
     }
 }

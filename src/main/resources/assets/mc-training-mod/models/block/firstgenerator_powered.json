@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "mc-training-mod:block/side",
+    "down": "mc-training-mod:block/firstgenerator_side",
+    "up": "mc-training-mod:block/firstgenerator_top",
+    "north": "mc-training-mod:block/firstgenerator_front_on",
+    "south": "mc-training-mod:block/firstgenerator_side",
+    "east": "mc-training-mod:block/firstgenerator_side",
+    "west": "mc-training-mod:block/firstgenerator_side"
+  }
+}
