@@ -41,9 +41,7 @@ public class FirstGeneratorContainer extends Container {
         //top left corner of the player inv in the gui
         layoutPlayerInventorySlots(8, 84);
 
-
-        //WTF need mapping
-        func_216958_a(new IntReferenceHolder() {
+        trackInt(new IntReferenceHolder() {
             @Override
             public int get() {
                 return getEnergy();

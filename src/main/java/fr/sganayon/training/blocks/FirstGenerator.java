@@ -61,7 +61,7 @@ public class FirstGenerator extends Block {
     }
 
     @Override
-    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public boolean func_220051_a(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         //isRemote = true => clientSide
         if(!worldIn.isRemote){
             // open gui on server side activate communication with clienSide (and open gui clientSide)
@@ -75,7 +75,7 @@ public class FirstGenerator extends Block {
             // avoid placing handled block when interacting
             return true;
         }
-        return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+        return super.func_220051_a(state, worldIn, pos, player, handIn, hit);
     }
 
     @Override

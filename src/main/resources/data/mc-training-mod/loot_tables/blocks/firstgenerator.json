@@ -1,49 +1,44 @@
 {
-  "type":"minecraft:block",
-  "pools":[
+  "type": "minecraft:block",
+  "pools": [
     {
-      "name":"mc-training-mod-pool",
-      "rolls":1,
-      "entries":[
+      "name": "firstgenerator",
+      "rolls": 1,
+      "entries": [
         {
-          "type":"minecraft:item",
-          "name":"mc-training-mod:firstgenerator",
-          "functions":[
+          "type": "minecraft:item",
+          "functions": [
             {
-              "function":"minecraft:copy_name",
-              "source":"block_entity"
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
             },
             {
-              "function":"minecraft:copy_nbt",
-              "source":"block_entity",
-              "ops":[
+              "function": "minecraft:copy_nbt",
+              "source": "block_entity",
+              "ops": [
                 {
-                  "source":"inv",
-                  "target":"BlockEntityTag.inv",
-                  "op":"replace"
+                  "source": "inv",
+                  "target": "BlockEntityTag.inv",
+                  "op": "replace"
                 },
                 {
-                  "source":"energy",
-                  "target":"BlockEntityTag.energy",
-                  "op":"replace"
+                  "source": "energy",
+                  "target": "BlockEntityTag.energy",
+                  "op": "replace"
                 }
               ]
             },
             {
-              "function":"minecraft:set_contents",
-              "entries":[
+              "function": "minecraft:set_contents",
+              "entries": [
                 {
-                  "type":"minecraft:dynamic",
-                  "name":"minecraft:contents"
+                  "type": "minecraft:dynamic",
+                  "name": "minecraft:contents"
                 }
               ]
             }
-          ]
-        }
-      ],
-      "conditions":[
-        {
-          "condition":"minecraft:survives_explosion"
+          ],
+          "name": "mc-training-mod:firstgenerator"
         }
       ]
     }
