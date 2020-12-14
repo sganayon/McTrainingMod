@@ -2,8 +2,12 @@ package fr.sganayon.training.setup;
 
 import fr.sganayon.training.McTrainingMod;
 import fr.sganayon.training.blocks.*;
+import fr.sganayon.training.entities.FirstAnimalEntity;
+import fr.sganayon.training.items.FirstAnimalEntityEggItem;
 import fr.sganayon.training.items.FirstItem;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -48,6 +52,7 @@ public class RegistryEvents {
 
         // item
         itemRegistryEvent.getRegistry().register(new FirstItem());
+        itemRegistryEvent.getRegistry().register(new FirstAnimalEntityEggItem());
     }
 
     @SubscribeEvent
@@ -68,5 +73,14 @@ public class RegistryEvents {
             BlockPos blockPos = data.readBlockPos();
             return new FirstGeneratorContainer(windowId, McTrainingMod.proxy.getClientWorld(), blockPos, inv, McTrainingMod.proxy.getClientPlayer());
         }).setRegistryName("firstgenerator"));
+    }
+
+    @SubscribeEvent
+    public static void onEntityRegistry(final RegistryEvent.Register<EntityType<?>> event) {
+        event.getRegistry().register(EntityType.Builder.create(FirstAnimalEntity::new, EntityClassification.CREATURE)
+                .size(1, 1)
+                .setShouldReceiveVelocityUpdates(false)
+                .build("first_animal_entity").setRegistryName(McTrainingMod.MODID, "first_animal_entity"));
+
     }
 }

@@ -14,7 +14,7 @@ public class Config {
 
     public static final String CATEGORY_GENERAL = "general";
     public static final String CATEGORY_POWER = "power";
-    public static final String SUBCATEGORY_FIRSTBLOCK = "firstblock";
+    public static final String SUBCATEGORY_FIRSTGENERATOR = "firstgenerator";
 
     private static final ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
     private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
@@ -24,12 +24,11 @@ public class Config {
     public static ForgeConfigSpec CLIENT_CONFIG;
 
 
-    public static ForgeConfigSpec.IntValue FIRSTBLOCK_MAXPOWER;
-    public static ForgeConfigSpec.IntValue FIRSTBLOCK_MAXTRANSFER;
-    public static ForgeConfigSpec.IntValue FIRSTBLOCK_GENERATE;
-    public static ForgeConfigSpec.IntValue FIRSTBLOCK_GENERATE_SPEED;
-    public static ForgeConfigSpec.IntValue FIRSTBLOCK_SEND;
-    public static ForgeConfigSpec.IntValue FIRSTBLOCK_TICKS;
+    public static ForgeConfigSpec.IntValue FIRSTGENERATOR_MAXPOWER;
+    public static ForgeConfigSpec.IntValue FIRSTGENERATOR_MAXTRANSFER;
+    public static ForgeConfigSpec.IntValue FIRSTGENERATOR_GENERATE;
+    public static ForgeConfigSpec.IntValue FIRSTGENERATOR_GENERATE_SPEED;
+    public static ForgeConfigSpec.IntValue FIRSTGENERATOR_SEND;
 
 
     static {
@@ -49,17 +48,17 @@ public class Config {
     }
 
     private static void setupFirstBlockConfig() {
-        COMMON_BUILDER.comment("FirstBlock settings").push(SUBCATEGORY_FIRSTBLOCK);
+        COMMON_BUILDER.comment("FirstGenerator settings").push(SUBCATEGORY_FIRSTGENERATOR);
 
-        FIRSTBLOCK_MAXPOWER = COMMON_BUILDER.comment("Maximum power for the FirstBlock generator")
+        FIRSTGENERATOR_MAXPOWER = COMMON_BUILDER.comment("Maximum power for the first generator ")
                 .defineInRange("maxPower", 100000, 0, Integer.MAX_VALUE);
-        FIRSTBLOCK_MAXTRANSFER = COMMON_BUILDER.comment("Maximum power transfer into FirstBlock generator")
+        FIRSTGENERATOR_MAXTRANSFER = COMMON_BUILDER.comment("Maximum power transfer into first generator")
                 .defineInRange("maxPowerTransferInto", 0, 0, Integer.MAX_VALUE);
-        FIRSTBLOCK_GENERATE = COMMON_BUILDER.comment("Power generation per diamond")
+        FIRSTGENERATOR_GENERATE = COMMON_BUILDER.comment("Power generation per diamond")
                 .defineInRange("generate", 1000, 0, Integer.MAX_VALUE);
-        FIRSTBLOCK_GENERATE_SPEED = COMMON_BUILDER.comment("Power generation speed in ticks")
+        FIRSTGENERATOR_GENERATE_SPEED = COMMON_BUILDER.comment("Power generation speed in ticks")
                 .defineInRange("generation_speed", 20, 0, Integer.MAX_VALUE);
-        FIRSTBLOCK_SEND = COMMON_BUILDER.comment("Power generation to send per tick")
+        FIRSTGENERATOR_SEND = COMMON_BUILDER.comment("Power generation to send per tick")
                 .defineInRange("send", 100, 0, Integer.MAX_VALUE);
 
         COMMON_BUILDER.pop();

@@ -56,7 +56,7 @@ public class FirstGeneratorTile extends TileEntity implements ITickableTileEntit
         if(counter > 0){
             counter--;
             if(counter <= 0){
-                energyStorageHandler.addEnergy(Config.FIRSTBLOCK_GENERATE.get());
+                energyStorageHandler.addEnergy(Config.FIRSTGENERATOR_GENERATE.get());
             }
             markDirty();
         }
@@ -64,7 +64,7 @@ public class FirstGeneratorTile extends TileEntity implements ITickableTileEntit
             Item item = itemStackHandler.getStackInSlot(0).getItem();
             if(item == Items.DIAMOND){
                 itemStackHandler.extractItem(0,1,false);
-                counter = Config.FIRSTBLOCK_GENERATE_SPEED.get();
+                counter = Config.FIRSTGENERATOR_GENERATE_SPEED.get();
                 markDirty();
             }
         }
@@ -129,7 +129,7 @@ public class FirstGeneratorTile extends TileEntity implements ITickableTileEntit
 
     @NotNull
     private CustomEnergyStorage createEnergyHandler() {
-        return new CustomEnergyStorage(Config.FIRSTBLOCK_MAXPOWER.get(),Config.FIRSTBLOCK_MAXTRANSFER.get());
+        return new CustomEnergyStorage(Config.FIRSTGENERATOR_MAXPOWER.get(),Config.FIRSTGENERATOR_MAXTRANSFER.get());
     }
 
     @NotNull
@@ -164,7 +164,7 @@ public class FirstGeneratorTile extends TileEntity implements ITickableTileEntit
                 if (te != null) {
                     boolean doContinue = te.getCapability(CapabilityEnergy.ENERGY, direction).map(handler -> {
                                 if (handler.canReceive()) {
-                                    int received = handler.receiveEnergy(Math.min(capacity.get(), Config.FIRSTBLOCK_SEND.get()), false);
+                                    int received = handler.receiveEnergy(Math.min(capacity.get(), Config.FIRSTGENERATOR_SEND.get()), false);
                                     capacity.addAndGet(-received);
                                     energyStorageHandler.consumeEnergy(received);
                                     markDirty();
