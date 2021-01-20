@@ -1,5 +1,6 @@
 package fr.sganayon.training.blocks;
 
+import fr.sganayon.training.setup.Registration;
 import fr.sganayon.training.tools.CustomEnergyStorage;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -27,7 +28,7 @@ public class FirstGeneratorContainer extends Container {
     private IItemHandler playerInventory;
 
     public FirstGeneratorContainer(int id, World world, BlockPos blockPos, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-        super(ModBlocks.FIRSTGENERATOR_CONTAINER, id);
+        super(Registration.FIRSTGENERATOR_CONTAINER.get(), id);
         this.tileEntity = world.getTileEntity(blockPos);
         this.playerEntity = playerEntity;
         this.playerInventory = new InvWrapper(playerInventory);
@@ -60,7 +61,7 @@ public class FirstGeneratorContainer extends Container {
 
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
-        return isWithinUsableDistance(IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()), playerEntity, ModBlocks.FIRSTGENERATOR);
+        return isWithinUsableDistance(IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()), playerEntity, Registration.FIRSTGENERATOR.get());
     }
 
     private int addSlotRange(IItemHandler handler, int index, int x, int y, int amount, int dx) {

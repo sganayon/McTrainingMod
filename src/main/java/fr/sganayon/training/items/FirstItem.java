@@ -10,7 +10,6 @@ public class FirstItem extends Item {
         super(new Item.Properties()
                 .maxStackSize(1)
                 .addToolType(ToolType.PICKAXE, 5)
-                .group(ModSetup.itemGroup));
-        setRegistryName("firstitem");
+                .group(ModSetup.ITEM_GROUP));
     }
 }

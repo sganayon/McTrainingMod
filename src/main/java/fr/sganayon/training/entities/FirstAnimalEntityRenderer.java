@@ -16,7 +16,7 @@ public class FirstAnimalEntityRenderer extends MobRenderer<FirstAnimalEntity, Fi
 
     @Nullable
     @Override
-    protected ResourceLocation getEntityTexture(FirstAnimalEntity entity) {
+    public ResourceLocation getEntityTexture(FirstAnimalEntity entity) {
         return TEXTURE;
     }
 }

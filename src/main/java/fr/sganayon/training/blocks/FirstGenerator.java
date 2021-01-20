@@ -13,10 +13,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -30,7 +32,6 @@ public class FirstGenerator extends Block {
                 .sound(SoundType.METAL)
                 .hardnessAndResistance(2.0f)
         );
-        setRegistryName("firstgenerator");
     }
 
     @Override
@@ -52,7 +53,8 @@ public class FirstGenerator extends Block {
     }
 
     public static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity entity) {
-        return Direction.getFacingFromVector((float) (entity.posX - clickedBlock.getX()), (float) (entity.posY - clickedBlock.getY()), (float) (entity.posZ - clickedBlock.getZ()));
+        Vec3d vec = entity.getPositionVec();
+        return Direction.getFacingFromVector((float) (vec.x - clickedBlock.getX()), (float) (vec.y - clickedBlock.getY()), (float) (vec.z - clickedBlock.getZ()));
     }
 
     @Override
@@ -60,8 +62,10 @@ public class FirstGenerator extends Block {
         builder.add(BlockStateProperties.FACING, BlockStateProperties.POWERED);
     }
 
+
+
     @Override
-    public boolean func_220051_a(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         //isRemote = true => clientSide
         if(!worldIn.isRemote){
             // open gui on server side activate communication with clienSide (and open gui clientSide)
@@ -73,9 +77,9 @@ public class FirstGenerator extends Block {
                 throw new IllegalStateException("Missing provider for "+ McTrainingMod.MODID+":firstgenerator");
             }
             // avoid placing handled block when interacting
-            return true;
+            return ActionResultType.SUCCESS;
         }
-        return super.func_220051_a(state, worldIn, pos, player, handIn, hit);
+        return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
     }
 
     @Override

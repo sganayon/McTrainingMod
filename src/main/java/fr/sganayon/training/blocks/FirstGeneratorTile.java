@@ -1,6 +1,7 @@
 package fr.sganayon.training.blocks;
 
 import fr.sganayon.training.Config;
+import fr.sganayon.training.setup.Registration;
 import fr.sganayon.training.tools.CustomEnergyStorage;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,8 +31,6 @@ import javax.annotation.Nullable;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static fr.sganayon.training.blocks.ModBlocks.FIRSTGENERATOR_TILE;
-
 public class FirstGeneratorTile extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
 
     private final ItemStackHandler itemStackHandler;
@@ -41,7 +40,7 @@ public class FirstGeneratorTile extends TileEntity implements ITickableTileEntit
     private int counter;
 
     public FirstGeneratorTile() {
-        super(FIRSTGENERATOR_TILE);
+        super(Registration.FIRSTGENERATOR_TILE.get());
         itemStackHandler = this.createItemStackHandler();
         itemHandler = LazyOptional.of(() -> itemStackHandler);
         energyStorageHandler = this.createEnergyHandler();

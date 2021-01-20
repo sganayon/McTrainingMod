@@ -1,7 +1,8 @@
 package fr.sganayon.training.items;
 
 import fr.sganayon.training.McTrainingMod;
-import fr.sganayon.training.entities.ModEntities;
+import fr.sganayon.training.setup.ModSetup;
+import fr.sganayon.training.setup.Registration;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -25,8 +26,7 @@ public class FirstAnimalEntityEggItem extends Item{
     public FirstAnimalEntityEggItem() {
         super(new Item.Properties()
                 .maxStackSize(1)
-                .group(McTrainingMod.setup.itemGroup));
-        setRegistryName("first_animal_entity_egg");
+                .group(ModSetup.ITEM_GROUP));
     }
 
     /**
@@ -47,7 +47,7 @@ public class FirstAnimalEntityEggItem extends Item{
                 TileEntity tileentity = world.getTileEntity(blockpos);
                 if (tileentity instanceof MobSpawnerTileEntity) {
                     AbstractSpawner abstractspawner = ((MobSpawnerTileEntity)tileentity).getSpawnerBaseLogic();
-                    abstractspawner.setEntityType(ModEntities.FIRSTANIMALENTITY);
+                    abstractspawner.setEntityType(Registration.FIRST_ANIMAL_ENTITY.get());
                     tileentity.markDirty();
                     world.notifyBlockUpdate(blockpos, blockstate, blockstate, 3);
                     itemstack.shrink(1);
@@ -62,7 +62,7 @@ public class FirstAnimalEntityEggItem extends Item{
                 blockpos1 = blockpos.offset(direction);
             }
 
-            if (ModEntities.FIRSTANIMALENTITY.spawn(world, itemstack, context.getPlayer(), blockpos1, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
+            if (Registration.FIRST_ANIMAL_ENTITY.get().spawn(world, itemstack, context.getPlayer(), blockpos1, SpawnReason.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
                 itemstack.shrink(1);
             }
 

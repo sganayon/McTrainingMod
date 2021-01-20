@@ -1,7 +1,6 @@
 package fr.sganayon.training.datagen;
 
-import fr.sganayon.training.McTrainingMod;
-import fr.sganayon.training.blocks.ModBlocks;
+import fr.sganayon.training.setup.Registration;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
@@ -21,7 +20,7 @@ public class Recipes extends RecipeProvider {
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         //.setGroup() add to the right panel (standard, combat, etc...)
-        ShapedRecipeBuilder.shapedRecipe(ModBlocks.FIRSTBLOCK)
+        ShapedRecipeBuilder.shapedRecipe(Registration.FIRSTBLOCK.get())
                 .patternLine("xxx")
                 .patternLine("x#x")
                 .patternLine("xxx")
@@ -30,12 +29,12 @@ public class Recipes extends RecipeProvider {
                 .addCriterion("cobblestone", InventoryChangeTrigger.Instance.forItems(Blocks.COBBLESTONE))
                 .build(consumer);
 
-        ShapedRecipeBuilder.shapedRecipe(ModBlocks.FIRSTGENERATOR)
+        ShapedRecipeBuilder.shapedRecipe(Registration.FIRSTGENERATOR.get())
                 .patternLine("xxx")
                 .patternLine("x x")
                 .patternLine("xxx")
-                .key('x', ModBlocks.FIRSTBLOCK)
-                .addCriterion("FIRSTBLOCK", InventoryChangeTrigger.Instance.forItems(ModBlocks.FIRSTBLOCK))
+                .key('x', Registration.FIRSTBLOCK.get())
+                .addCriterion("FIRSTBLOCK", InventoryChangeTrigger.Instance.forItems(Registration.FIRSTBLOCK.get()))
                 .build(consumer);
     }
 }

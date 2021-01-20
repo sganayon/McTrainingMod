@@ -1,6 +1,6 @@
 package fr.sganayon.training.datagen;
 
-import fr.sganayon.training.blocks.ModBlocks;
+import fr.sganayon.training.setup.Registration;
 import net.minecraft.data.DataGenerator;
 
 public class LootTables extends BaseLootTableProvider {
@@ -11,7 +11,8 @@ public class LootTables extends BaseLootTableProvider {
 
     @Override
     protected void addTables() {
-        lootTables.put(ModBlocks.FIRSTBLOCK, createStandardTable("firstblock", ModBlocks.FIRSTBLOCK));
-        lootTables.put(ModBlocks.FIRSTGENERATOR, createStandardTable("firstgenerator", ModBlocks.FIRSTGENERATOR));
+        lootTables.put(Registration.FIRSTBLOCK.get(), createStandardTable("firstblock", Registration.FIRSTBLOCK.get()));
+        lootTables.put(Registration.FIRSTGENERATOR.get(), createStandardTable("firstgenerator", Registration.FIRSTGENERATOR.get()));
+        lootTables.put(Registration.FANCYBLOCK.get(), createStandardTable("fancyblock", Registration.FANCYBLOCK.get()));
     }
 }

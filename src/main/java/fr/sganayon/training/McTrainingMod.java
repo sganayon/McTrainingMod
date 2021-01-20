@@ -21,30 +21,15 @@ public class McTrainingMod {
 
     public static ModSetup setup = new ModSetup();
 
-    // Double lambda for class contruction things, optional appearently
-    public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
-
-    public static RegistryEvents registryEvents;
-
     public McTrainingMod() {
         // Register config file
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_CONFIG);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
 
+        Registration.init();
+
         // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-
-        // Load config file
-        Config.loadConfig(Config.CLIENT_CONFIG, FMLPaths.CONFIGDIR.get().resolve("mc-training-mod-client.toml"));
-        Config.loadConfig(Config.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve("mc-training-mod-common.toml"));
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModSetup::init);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::init);
     }
-
-    // After all things have been registered
-    private void setup(final FMLCommonSetupEvent event) {
-        // some preinit code
-        setup.init();
-        proxy.init();
-    }
-
-
 }

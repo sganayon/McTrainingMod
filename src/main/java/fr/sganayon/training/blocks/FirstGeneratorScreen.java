@@ -1,6 +1,7 @@
 package fr.sganayon.training.blocks;
 
 import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import fr.sganayon.training.McTrainingMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
@@ -26,7 +27,7 @@ public class FirstGeneratorScreen extends ContainerScreen<FirstGeneratorContaine
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.minecraft.getTextureManager().bindTexture(GUI);
         // width : total width of the screen,
         int relX = (this.width - this.xSize) / 2;
