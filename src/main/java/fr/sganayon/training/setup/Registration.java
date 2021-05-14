@@ -47,7 +47,6 @@ public class Registration {
     public static final RegistryObject<FirstGenerator> FIRSTGENERATOR = BLOCKS.register("firstgenerator", FirstGenerator::new);
     public static final RegistryObject<Item> FIRSTGENERATOR_ITEM = ITEMS.register("firstgenerator", () -> new BlockItem(FIRSTGENERATOR.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
     public static final RegistryObject<TileEntityType<FirstGeneratorTile>> FIRSTGENERATOR_TILE = TILES.register("firstgenerator", () -> TileEntityType.Builder.create(FirstGeneratorTile::new, FIRSTGENERATOR.get()).build(null));
-
     public static final RegistryObject<ContainerType<FirstGeneratorContainer>> FIRSTGENERATOR_CONTAINER = CONTAINERS.register("firstgenerator", () -> IForgeContainerType.create((windowId, inv, data) -> {
         BlockPos pos = data.readBlockPos();
         World world = inv.player.getEntityWorld();
@@ -57,6 +56,11 @@ public class Registration {
     public static final RegistryObject<FancyBlock> FANCYBLOCK = BLOCKS.register("fancyblock", FancyBlock::new);
     public static final RegistryObject<Item> FANCYBLOCK_ITEM = ITEMS.register("fancyblock", () -> new BlockItem(FANCYBLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
     public static final RegistryObject<TileEntityType<FancyBlockTile>> FANCYBLOCK_TILE = TILES.register("fancyblock", () -> TileEntityType.Builder.create(FancyBlockTile::new, FANCYBLOCK.get()).build(null));
+
+    public static final RegistryObject<MagicBlock> MAGICBLOCK = BLOCKS.register("magicblock", MagicBlock::new);
+    public static final RegistryObject<Item> MAGICBLOCK_ITEM = ITEMS.register("magicblock", () -> new BlockItem(MAGICBLOCK.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+    public static final RegistryObject<TileEntityType<MagicTile>> MAGICBLOCK_TILE = TILES.register("magicblock", () -> TileEntityType.Builder.create(MagicTile::new, MAGICBLOCK.get()).build(null));
+
 
     public static final RegistryObject<FirstItem> FIRSTITEM = ITEMS.register("firstitem", FirstItem::new);
     public static final RegistryObject<FirstAnimalEntityEggItem> FIRST_ANIMAL_ENTITY_EGG_ITEM = ITEMS.register("first_animal_entity_egg", FirstAnimalEntityEggItem::new);

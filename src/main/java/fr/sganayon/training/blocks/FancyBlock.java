@@ -35,7 +35,7 @@ public class FancyBlock extends Block {
         TileEntity te = reader.getTileEntity(pos);
         if (te instanceof FancyBlockTile) {
             BlockState mimic = ((FancyBlockTile) te).getMimic();
-            if (mimic != null) {
+            if (mimic != null && !(mimic.getBlock() instanceof FancyBlock)) {
                 return mimic.getShape(reader, pos, context);
             }
         }

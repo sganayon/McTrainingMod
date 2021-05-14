@@ -90,7 +90,7 @@ public class FancyBakedModel implements IDynamicBakedModel {
             ModelResourceLocation location = BlockModelShapes.getModelLocation(mimic);
             if (location != null) {
                 IBakedModel model = Minecraft.getInstance().getModelManager().getModel(location);
-                if (model != null) {
+                if (model != null && !(model instanceof FancyBakedModel)) {
                     return model.getQuads(mimic, side, rand, extraData);
                 }
             }
