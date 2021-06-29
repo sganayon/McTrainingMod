@@ -7,6 +7,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
+import net.minecraft.item.Items;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
@@ -35,6 +36,24 @@ public class Recipes extends RecipeProvider {
                 .patternLine("xxx")
                 .key('x', Registration.FIRSTBLOCK.get())
                 .addCriterion("FIRSTBLOCK", InventoryChangeTrigger.Instance.forItems(Registration.FIRSTBLOCK.get()))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(Registration.DOUBLE_IRON_PICKAXE.get())
+                .patternLine(" x ")
+                .patternLine(" x ")
+                .patternLine(" i ")
+                .key('x', Items.IRON_PICKAXE)
+                .key('i', Items.IRON_INGOT)
+                .addCriterion("iron_pickaxe", InventoryChangeTrigger.Instance.forItems(Items.IRON_PICKAXE))
+                .build(consumer);
+
+        ShapedRecipeBuilder.shapedRecipe(Registration.CUBE_PICKAXE.get())
+                .patternLine("xxx")
+                .patternLine("ixi")
+                .patternLine(" i ")
+                .key('x', Items.OBSIDIAN)
+                .key('i', Items.IRON_INGOT)
+                .addCriterion("iron_pickaxe", InventoryChangeTrigger.Instance.forItems(Items.IRON_PICKAXE))
                 .build(consumer);
     }
 }

@@ -1,6 +1,8 @@
 package fr.sganayon.training;
 
+import fr.sganayon.training.events.DoublePickaxeBreakEventHandler;
 import fr.sganayon.training.setup.*;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -31,5 +33,7 @@ public class McTrainingMod {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModSetup::init);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::init);
+
+        MinecraftForge.EVENT_BUS.register(DoublePickaxeBreakEventHandler.class);
     }
 }

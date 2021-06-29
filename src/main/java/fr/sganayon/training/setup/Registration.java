@@ -1,17 +1,14 @@
 package fr.sganayon.training.setup;
 
-import fr.sganayon.training.McTrainingMod;
 import fr.sganayon.training.blocks.*;
 import fr.sganayon.training.dimension.TestModDimension;
 import fr.sganayon.training.entities.FirstAnimalEntity;
-import fr.sganayon.training.items.FirstAnimalEntityEggItem;
-import fr.sganayon.training.items.FirstItem;
+import fr.sganayon.training.items.*;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -66,6 +63,10 @@ public class Registration {
     public static final RegistryObject<TileEntityType<ComplexMultipartTile>> COMPLEX_MULTIPART_TILE = TILES.register("complex_multipart", () -> TileEntityType.Builder.create(ComplexMultipartTile::new, COMPLEX_MULTIPART.get()).build(null));
 
     public static final RegistryObject<FirstItem> FIRSTITEM = ITEMS.register("firstitem", FirstItem::new);
+    public static final RegistryObject<DoublePickaxe> DOUBLE_IRON_PICKAXE = ITEMS.register("double_iron_pickaxe", () -> new DoublePickaxe(ItemTier.IRON));
+    //public static final RegistryObject<CubePickaxe> CUBE_PICKAXE = ITEMS.register("cube_pickaxe", () -> new CubePickaxe(ItemTierMod.OBSI, 5, 5, 5, true, false));
+    public static final RegistryObject<CubePickaxe> CUBE_PICKAXE = ITEMS.register("cube_pickaxe", () -> new Obliterator(5,5,64));
+
     public static final RegistryObject<FirstAnimalEntityEggItem> FIRST_ANIMAL_ENTITY_EGG_ITEM = ITEMS.register("first_animal_entity_egg", FirstAnimalEntityEggItem::new);
 
     public static final RegistryObject<EntityType<FirstAnimalEntity>> FIRST_ANIMAL_ENTITY = ENTITIES.register("first_animal_entity", () -> EntityType.Builder.create(FirstAnimalEntity::new, EntityClassification.CREATURE)
