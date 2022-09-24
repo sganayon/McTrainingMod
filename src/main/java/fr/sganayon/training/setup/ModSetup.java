@@ -1,6 +1,8 @@
 package fr.sganayon.training.setup;
 
 import fr.sganayon.training.McTrainingMod;
+import fr.sganayon.training.capabilities.CapabilityEntityCharge;
+import fr.sganayon.training.capabilities.ChargeEventHandler;
 import fr.sganayon.training.commands.ModCommands;
 import fr.sganayon.training.dimension.ModDimensions;
 import fr.sganayon.training.network.Networking;
@@ -28,6 +30,12 @@ public class ModSetup {
 
     public static void init(final FMLClientSetupEvent event) {
         Networking.registerMessages();
+        CapabilityEntityCharge.register();
+
+        MinecraftForge.EVENT_BUS.addListener(ChargeEventHandler::onAttachCapabilitiesEvent);
+        MinecraftForge.EVENT_BUS.addListener(ChargeEventHandler::onAttackEvent);
+        MinecraftForge.EVENT_BUS.addListener(ChargeEventHandler::onDeathEvent);
+
     }
 
     @SubscribeEvent

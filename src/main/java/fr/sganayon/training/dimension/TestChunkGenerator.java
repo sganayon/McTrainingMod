@@ -59,6 +59,11 @@ public class TestChunkGenerator extends ChunkGenerator<TestChunkGenerator.Config
     }
 
     @Override
+    public int getNoiseHeightMinusOne(int x, int z, Heightmap.Type heightmapType) {
+        return 0;
+    }
+
+    @Override
     public int getGroundHeight() {
         return world.getSeaLevel()+1;
     }

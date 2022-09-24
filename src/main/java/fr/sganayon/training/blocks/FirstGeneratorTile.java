@@ -48,6 +48,13 @@ public class FirstGeneratorTile extends TileEntity implements ITickableTileEntit
     }
 
     @Override
+    public void remove() {
+        super.remove();
+        itemHandler.invalidate();
+        energyHandler.invalidate();
+    }
+
+    @Override
     public void tick() {
         if(world.isRemote){
             return;

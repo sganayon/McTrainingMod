@@ -7,5 +7,7 @@
   "block.mc-training-mod.firstgenerator": "First generator",
 
   "_comment": "Creative Tabs",
-  "itemGroup.mc-training-mod": "Mc training mod"
+  "itemGroup.mc-training-mod": "Mc training mod",
+
+  "message.increase_charge": "Mob has been charged to %s"
 }
